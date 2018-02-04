@@ -1,0 +1,76 @@
+USEFUL DJANGO COMMANDS
+-----------------------
+
+1. Create a project
+django-admin startproject projectname
+
+2. Run a server
+python manage.py runserver
+
+3. Create an app
+python manage.py startapp appname
+
+4. Create migration file
+python manage.py makemigrations
+
+5. Apply a migration created
+python manage.py migrate
+
+6. Create a user with access to the admin section
+python manage.py createsuperuser
+
+
+DJANGO ORM COMMANDS
+--------------------
+* Open the interactive console
+    python manage.py shell
+
+* Importing a model
+    from modulename.models import modelname
+
+* Work with instances
+    instancename = Classname() # create an instance
+    instancename.attributename = value # set an attribute
+
+* Saving an instance to the database
+    instancename.save()
+
+* Retrive instances
+    Classname.objects.all() # retrive all of them
+    Classname.objects.all()[i] # retrive the ith instance
+
+
+TROUBLESHOOTERS
+----------------
+
+* In urls.py file inside the urlpatterns list, you can specify path using either of the two methods:
+    * path ('url', views.func_for_this_url)
+    * url (r^'url_regex', vews.func_for_this_url)
+  In case you should choose the latter you need to import:
+  from django.conf.urls import url
+  For both the cases, you need to import views:
+  from . import views
+  (The '.' means current directory)
+
+* For returning HTTP Responses, in the views.py file, import:
+    from django.http import HttpResponse
+  And for each function:
+    return HttpResponse("text / html")
+
+* For rendering templates, in the views.py file, import:
+    from django.shortcuts import render 
+  And for each function:
+    return render(request, "pagename.html")
+
+* In case rendering templates don't work, open settings.py, scroll down to DIRS list inside TEMPLATES dictionary, and add 'templates' to the list. Make sure the templates folder is inside the root directory.
+
+* After you create an app,
+    * Register it inside the INSTALLED_APPS list of settings.py in the root directory.
+    * Create appname/templates/appname directory for namespacing and avoiding conflicts.
+    * Put all you HTML templates for this app inside the above directory.
+    * Inside root/urls.py, import the include function from django.conf.urls and use this function to link all the urls in appname/urls.py:
+        url (r'^appname/', include('appname.urls'))
+
+* In order to render a page inside an app,
+    return render(request, "appname/articles.html")
+

@@ -1,0 +1,27 @@
+{% extends 'base_layout.html' %}
+
+{% block titlecontent %}
+<title>Djangonautic | Articles</title>
+{% endblock %}
+
+{% block bodycontent %}
+    <div class="container-fluid col-12">
+        <h1>Articles page of Djangonautic</h1>
+
+        <!-- Use of template tags to use Python code in HTML -->
+
+        <div class="articles">
+            {% for article in arts %}
+                <div class="article">
+                    <h2 class="art-title"> {{ article.title }} </h2>
+                    <p class="art-body"> {{ article.snippet }} </p>
+                    <p class="art-date"> {{article.date}} </p>
+                </div>
+            {% endfor %}
+        </div>
+
+    </div>
+{% endblock %}
+    
+    
+
