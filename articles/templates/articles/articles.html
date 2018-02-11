@@ -1,19 +1,22 @@
 {% extends 'base_layout.html' %}
 
-{% block titlecontent %}
-<title>Djangonautic | Articles</title>
-{% endblock %}
+{% block titlecontent %} Articles {% endblock %}
 
 {% block bodycontent %}
     <div class="container-fluid col-12">
-        <h1>Articles page of Djangonautic</h1>
+        <a href="{% url 'articles:list' %}">
+            <h1>Articles page of Djangonautic - replace this soon</h1>
+        </a>
 
         <!-- Use of template tags to use Python code in HTML -->
 
         <div class="articles">
             {% for article in arts %}
                 <div class="article">
-                    <h2 class="art-title"> {{ article.title }} </h2>
+                    <img src="{{ article.thumb.url }}" width="30px">
+                    <a href="{% url 'articles:detail' slug=article.url %}"> 
+                        <span class="art-title"> {{ article.title }} </span>
+                    </a>
                     <p class="art-body"> {{ article.snippet }} </p>
                     <p class="art-date"> {{article.date}} </p>
                 </div>

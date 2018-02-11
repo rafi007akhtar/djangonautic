@@ -22,8 +22,7 @@ class Article (models.Model):
     url = models.SlugField(max_length = 100) # SlugField is used for URLs of artciles
     body = models.TextField() # artcile body
     date = models.DateTimeField(auto_now_add = True) # when the article was written, assigned by the system itself while the article gets written (the user does not need to specify the time)
-
-    # TODO: Add article thumbnail
+    thumb = models.ImageField(default="default.png", blank=True)
 
     def __str__(self):
         # returns what should be displayed when an article object is fetched in the console
@@ -35,6 +34,7 @@ class Article (models.Model):
       if len(snip) < len(self.body): snip += "..."
       return snip
 
-
-
+    def slugGenerator (article):
+      # generates the URL parameter on clicking on an article title
+      return article.title.replace(" ", "-").lower()
 

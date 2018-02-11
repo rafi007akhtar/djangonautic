@@ -1,0 +1,14 @@
+{% extends 'base_layout.html' %}
+
+{% block titlecontent %} {{ art.title }} {% endblock %}
+
+{% block bodycontent %}
+    <div class="container-fluid">
+        <img src="{{ art.thumb.url }}" width="80px">
+        <span style="font-size: 3em;"> {{ art.title }} </span>
+        <br> <br>
+        <p> {{ art.body }} </p>
+        <p> - {{ art.author }} </p>
+        <p class="text-right"> {{ art.date }} </p>
+    </div>
+{% endblock %}

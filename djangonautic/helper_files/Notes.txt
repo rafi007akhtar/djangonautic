@@ -39,6 +39,14 @@ DJANGO ORM COMMANDS
     Classname.objects.all() # retrive all of them
     Classname.objects.all()[i] # retrive the ith instance
 
+* Create a name-capturing group
+    r"^(?P<slug>[\w-]+)/$"
+  Meaning:
+  It starts with a name-capturing group (?P<slug>[\w-]+) and ends in a /
+  Name-capturing group starts with ?P that specifies the group is a name-capturing group. 
+  The name of this group 'slug' is written b/w angular brackets <>.
+  Then follows what this group will contain in regex. (Here, its one or more characters of any word character or hyphen.)
+
 
 TROUBLESHOOTERS
 ----------------
@@ -73,4 +81,31 @@ TROUBLESHOOTERS
 
 * In order to render a page inside an app,
     return render(request, "appname/articles.html")
+
+* Using named URLs
+    * Create a URL in urlpatterns:
+    url (r'url_regex', modulename.viewname, name="url_name")
+    * In the rendering HTML page, use the template tag in the anchor tag
+     <a href="{% url 'url_name' slug=article.slug_attribute %}"> Link text </a>
+
+* For static files
+    * Add these two variables in the settings.py file
+        STATIC_URL = '/static/'
+        STATICFILES_DIRS = [
+            os.path.join(BASE_DIR, "static"),
+        ]
+    * Create the static folder as mentioned above.
+    * Head over to urls.py file, and add the following lines
+        from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+        urlpatterns += staticfiles_urlpatterns()
+    * Put all your static files in this folder.
+
+* For media files
+    * Add these two variables in the settings.py file
+        MEDIA_URL = "/media/"
+        MEDIA_ROOT = os.path.join(BASE_DIR, "media")
+    *  Head over to urls.py file, and add the following lines
+        from django.conf.urls.static import static
+		from django.conf import settings
+        urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
