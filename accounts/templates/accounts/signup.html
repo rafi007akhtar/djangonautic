@@ -1,0 +1,23 @@
+{% extends 'base_layout.html' %}
+
+{% block titlecontent %} Signup {% endblock %}
+
+{% block style %}
+    h1 {
+        border-bottom: 1px solid;
+    }
+{% endblock %}
+
+{% block bodycontent %}
+
+    <div class="container-fluid">
+        <h1 class="text-center">Create a New User</h1>
+
+        <form class="site-form" action="/accounts/signup/" method="post">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" value="Sign Up" class="btn btn-success btn-block">
+        </form>
+    </div>
+
+{% endblock %}

@@ -109,3 +109,8 @@ TROUBLESHOOTERS
 		from django.conf import settings
         urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)
 
+* For the accounts app
+    * make it, register it, include it, setup a urls.py for it, namespace it
+    * use POST and GET cases for the app view, create UserCreationForm instance, and pass it in a dictionary for rendering
+    * Inside the <form> field of the rendered page, make sure to use csrf_token in a template tag
+    * Inside the <form> field of the rendered page, return the key from the dictionary passed
