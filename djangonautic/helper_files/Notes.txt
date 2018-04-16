@@ -114,3 +114,17 @@ TROUBLESHOOTERS
     * use POST and GET cases for the app view, create UserCreationForm instance, and pass it in a dictionary for rendering
     * Inside the <form> field of the rendered page, make sure to use csrf_token in a template tag
     * Inside the <form> field of the rendered page, return the key from the dictionary passed
+
+
+USERS
+------
+    Available logged in users to try
+    
+    userid: rafier
+    password: rafi1234
+
+    userid: yetanotheruser
+    password: rafi1234
+
+    userid (superuser): Rafi
+    password: 1RafiAkhtar!

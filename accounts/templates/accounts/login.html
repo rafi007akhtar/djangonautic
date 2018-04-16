@@ -1,0 +1,24 @@
+{% extends 'base_layout.html' %}
+
+{% block titlecontent %} Login {% endblock %}
+
+{% block style %}
+    h1 {
+        border-bottom: 1px solid;
+    }
+{% endblock %}
+
+{% block bodycontent %}
+
+    <div class="container-fluid">
+        <h1 class="text-center">Log in with your credentials</h1>
+
+        <form class="site-form" action="/accounts/login/" method="post">
+            {% csrf_token %}
+            {{ form }}
+            &emsp;
+            <input type="submit" value="Login" class="btn btn-success">
+        </form>
+    </div>
+
+{% endblock %}
