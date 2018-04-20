@@ -2,11 +2,16 @@
 
 {% block titlecontent %} Articles {% endblock %}
 
+
+{% block style %}
+    #art a {
+        color: papayawhip;
+    }
+{% endblock %}
+
 {% block bodycontent %}
-    <div class="container-fluid col-12">
-        <a href="{% url 'articles:list' %}">
-            <h1>Articles page of Djangonautic</h1>
-        </a>
+    <div class="container-fluid col-12" id="art">
+        <h1>Articles page of Djangonautic</h1>
 
         <!-- Use of template tags to use Python code in HTML -->
 
