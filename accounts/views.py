@@ -31,6 +31,10 @@ def login(request):
             # log this user in
             logi(request, user)
 
+            if 'next' in request.POST:
+                # if the URL contains a 'next' query, redirect there after login
+                return redirect(request.POST.get('next'))
+
             return redirect("articles:list") 
     
     else:

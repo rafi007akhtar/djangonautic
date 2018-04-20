@@ -115,6 +115,13 @@ TROUBLESHOOTERS
     * Inside the <form> field of the rendered page, make sure to use csrf_token in a template tag
     * Inside the <form> field of the rendered page, return the key from the dictionary passed
 
+* For model forms (user-made forms that store data in user-made models)
+    * create a file to save the meta data (say, forms.py)
+    * create a nested class in this file, where the outer class inherits from form.ModelForm, and outer class stores meta-data
+    * the meta-data consists of the model that we made in the models file, and all its fields in a list.
+    * In the HTML file, remember to add an encryption type for file upload to the form.
+    * Finally, in the view created, validate the form, save it to database, redirect to article listing page.
+
 
 USERS
 ------

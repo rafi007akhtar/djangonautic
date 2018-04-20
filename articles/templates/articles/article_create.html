@@ -1,7 +1,22 @@
 {% extends 'base_layout.html' %}
 
-{% block titlecontent %} Djangonautic | Create article {% endblock %}
+{% block titlecontent %} Create article {% endblock %}
+
+{% block style %}
+    h1 {
+        border-bottom: 1px solid;
+    }
+{% endblock %}
 
 {% block bodycontent %}
-    <h1 class="art-body">Create an article</h1>
+    <div class="container-fluid">
+        <h1 class="text-center">Create an article</h1>
+
+        <form class="" action="{% url 'articles:create' %}" method="post", enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form }}
+            <input type="submit" value="Create" class="btn btn-primary btn-block">
+        </form>
+    </div>
+    
 {% endblock %}

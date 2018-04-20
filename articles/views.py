@@ -1,7 +1,8 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Article # from models.py module in the same folder, import the Article class
 from django.http import HttpResponse
 from django.contrib.auth.decorators import login_required
+from . import forms
 
 def article_list (request):
     # obtain all the instances of the Article class, and order them by their 'date' attributes (newest first)
@@ -24,8 +25,19 @@ def article_detail (request, slug):
     # allow this dictionary to be accessible to articles.html so that articles.html can use the article and render them on the webpage
     return render(request, "articles/article_detail.html", dici)
 
+# login required to add new articles
 @login_required(login_url="/accounts/login/")
 def article_create(request):
-    # login required to add new articles
-    return render(request, "articles/article_create.html")
+    if request.method == "POST":
+        # Validate the form, save it to database, redirect to article listing page
+        
+        form = forms.CreateArticle(request.POST, request.FILES) # the second parameter is for the thumb field validation
+        
+        if form.is_valid:
+            # TODO: save it to the database
+            return redirect("articles:list")
+    else: 
+        form = forms.CreateArticle() 
+
+    return render(request, "articles/article_create.html", {'form': form})
 
