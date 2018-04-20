@@ -18,7 +18,7 @@ def signup(request):
         UCF = UserCreationForm()
 
     # pass on this instance in the render call
-    return render(request, "accounts/signup.html", {"form": UCF})
+    return render(request, "accounts/signup.html", {"form": UCF, "user": request.user})
 
 def login(request):
     if request.method == "POST":
@@ -42,7 +42,7 @@ def login(request):
         loginForm = AuthenticationForm()
     
     # pass on the latest instance (GET / unvalidated POST) to the template
-    return render(request, "accounts/login.html", {"form": loginForm})
+    return render(request, "accounts/login.html", {"form": loginForm, "user": request.user})
 
 def logout_view(request):
     # Logout the user if he hits the logout submit button

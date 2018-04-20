@@ -20,17 +20,31 @@
     </head>
 
     <body>
-        <nav class="text-right">
-            <ul type="none">
-                <li>
-                    <!-- LOGOUT BUTTON -->
-                    <form action="{% url 'accounts:logout' %}" method="post">
-                        {% csrf_token %}
-                        <button type="submit" class="btn btn-default">LOGOUT</button>
-                    </form>
-                </li>
-            </ul>
+
+        <nav class="navbar navbar-expand-lg navbar-dark">
+                <a class="navbar-brand" href="/">Djangonatic</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+              
+                <div class="collapse navbar-collapse text-right">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item active"> Logged in as: {{ user }} &emsp; </li>
+                        <li>
+                            {% if user.is_authenticated %}
+                                <!-- LOGOUT BUTTON -->
+                                <form action="{% url 'accounts:logout' %}" method="post" class="text-right">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-default">LOGOUT</button>
+                                </form>
+                            {% else %}
+                                <button class="btn btn-default"> <a href="{% url 'accounts:login' %}"> LOGIN </a></button>
+                            {% endif %}
+                        </li>
+                    </ul>
+                </div>
         </nav>
+
         {% block bodycontent %}
         {% endblock %}
 
