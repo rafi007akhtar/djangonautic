@@ -1,5 +1,6 @@
 from django.db import models
 import datetime
+from django.contrib.auth.models import User
 
 """
 * A model is a class in Python used to represent a table in a database.
@@ -18,7 +19,7 @@ class Article (models.Model):
     """
 
     title = models.CharField(max_length = 50) # title is a character column not more than 100 characters long
-    author = models.CharField(max_length = 50) # author name
+    author = models.ForeignKey(User, on_delete=models.PROTECT, default = None) # author name, out of the list of authors with an account
     url = models.SlugField(max_length = 100) # SlugField is used for URLs of artciles
     body = models.TextField() # artcile body
     date = models.DateTimeField(auto_now_add = True) # when the article was written, assigned by the system itself while the article gets written (the user does not need to specify the time)

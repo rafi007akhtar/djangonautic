@@ -18,5 +18,17 @@
             <input type="submit" value="Create" class="btn btn-primary btn-block">
         </form>
     </div>
-    
+{% endblock %}
+
+{% block scriptcontent %}
+    <script>
+        var inputs = $("input");
+        console.log(inputs);
+        // for (var i = 0; i < inputs.length; i++)
+        // {
+        //     var elem = inputs[i];
+        //     var line = $("<br>");
+        //     elem.appendChild(line);
+        // }            
+    </script>
 {% endblock %}

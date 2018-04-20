@@ -7,4 +7,4 @@ class CreateArticle (forms.ModelForm):
     # class to store all the model form fields from models.py
     class Meta:
         model = models.Article
-        fields = ["title", "author", "url", "body", "thumb"]
+        fields = ["title", "url", "body", "thumb"]

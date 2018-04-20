@@ -30,11 +30,12 @@ def article_detail (request, slug):
 def article_create(request):
     if request.method == "POST":
         # Validate the form, save it to database, redirect to article listing page
-        
         form = forms.CreateArticle(request.POST, request.FILES) # the second parameter is for the thumb field validation
-        
         if form.is_valid:
-            # TODO: save it to the database
+            # Save it to the database
+            instance = form.save(commit = False) # retrieve the validated form (without author as a field) without actually saving it to the datavase (made sure by the paramter)
+            instance.author = request.user # add the author key to the form with value as the username
+            instance.save() # save the form in the database
             return redirect("articles:list")
     else: 
         form = forms.CreateArticle() 
