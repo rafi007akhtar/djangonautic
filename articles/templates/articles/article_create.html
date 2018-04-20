@@ -6,29 +6,25 @@
     h1 {
         border-bottom: 1px solid;
     }
+
+    .site-form input, .site-form textarea {
+        display: block;
+        margin-bottom: 20px;
+    }
+    
+    .errorlist {
+        list-style-type: none;
+    }
 {% endblock %}
 
 {% block bodycontent %}
     <div class="container-fluid">
         <h1 class="text-center">Create an article</h1>
 
-        <form class="" action="{% url 'articles:create' %}" method="post", enctype="multipart/form-data">
+        <form class="site-form" action="{% url 'articles:create' %}" method="post", enctype="multipart/form-data">
             {% csrf_token %}
             {{ form }}
-            <input type="submit" value="Create" class="btn btn-primary btn-block">
+            <input type="submit" value="Create" class="btn btn-primary">
         </form>
     </div>
-{% endblock %}
-
-{% block scriptcontent %}
-    <script>
-        var inputs = $("input");
-        console.log(inputs);
-        // for (var i = 0; i < inputs.length; i++)
-        // {
-        //     var elem = inputs[i];
-        //     var line = $("<br>");
-        //     elem.appendChild(line);
-        // }            
-    </script>
 {% endblock %}

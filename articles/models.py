@@ -35,7 +35,7 @@ class Article (models.Model):
       if len(snip) < len(self.body): snip += "..."
       return snip
 
-    def slugGenerator (article):
+    def slugGenerator (title):
       # generates the URL parameter on clicking on an article title
-      return article.title.replace(" ", "-").lower()
+      return title.replace(" ", "-").lower()
 

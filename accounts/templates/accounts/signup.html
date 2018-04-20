@@ -6,6 +6,23 @@
     h1 {
         border-bottom: 1px solid;
     }
+
+    .site-form input, .site-form .helptext {
+        display: block;
+    }
+
+    .site-form label {
+        margin-top: 20px;
+    }
+
+    .helptext {
+        font-family: sans-serif;
+        font-style: italic;
+    }
+
+    .errorlist {
+        list-style-type: none;
+    }
 {% endblock %}
 
 {% block bodycontent %}
@@ -16,8 +33,16 @@
         <form class="site-form" action="/accounts/signup/" method="post">
             {% csrf_token %}
             {{ form }}
-            <input type="submit" value="Sign Up" class="btn btn-success btn-block">
+            <br>
+            <input type="submit" value="Sign Up" class="btn btn-success">
         </form>
     </div>
+
+    {% block scriptcontent %}
+        <script>
+            var error = $(".errorlist");
+            error.addClass("btn btn-danger btn-block");
+        </script>
+    {% endblock %}
 
 {% endblock %}

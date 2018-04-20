@@ -6,6 +6,15 @@
     h1 {
         border-bottom: 1px solid;
     }
+
+    .site-form input {
+        display: block;
+        margin-bottom: 20px;
+    }
+    
+    .errorlist {
+        list-style-type: none;
+    }
 {% endblock %}
 
 {% block bodycontent %}
@@ -25,5 +34,12 @@
             <input type="submit" value="Login" class="btn btn-success">
         </form>
     </div>
+
+    {% block scriptcontent %}
+        <script>
+            var error = $(".errorlist");
+            error.addClass("btn btn-danger btn-block");
+        </script>
+    {% endblock %}
 
 {% endblock %}

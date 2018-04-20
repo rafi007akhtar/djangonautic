@@ -57,7 +57,7 @@
                                     <button type="submit" class="btn btn-default">LOGOUT</button>
                                 </form>
                             {% else %}
-                                <button class="btn btn-default"> <a href="{% url 'accounts:login' %}"> LOGIN </a></button>
+                                <button class="btn btn-default" href=""> <a href="{% url 'accounts:login' %}"> LOGIN </a></button>
                                 &emsp;
                                 <button class="btn btn-default"> <a href="{% url 'accounts:signup' %}"> NEW ACCOUNT </a></button>
                             {% endif %}

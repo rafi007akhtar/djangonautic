@@ -37,6 +37,8 @@ def article_create(request):
             instance = form.save(commit = False) # retrieve the validated form (without author as a field) without actually saving it to the datavase (made sure by the paramter)
             instance.author = request.user # add the author key to the form with value as the username
             instance.save() # save the form in the database
+            instance.url = Article.slugGenerator(instance.title)
+            instance.save()
             return redirect("articles:list")
     else: 
         form = forms.CreateArticle() 
